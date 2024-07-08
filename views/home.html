@@ -17,14 +17,14 @@
             <div class="max-w-xl">
             <h1 class="text-5xl font-bold">Welcome!</h1>
             <p class="py-6">
-                This is a Vehicle API. It's a simple REST API. You can use it to create, read, update, and delete.
+                This API provides functionalities to manage vehicle data including brands, types, models, and pricelists. It supports operations such as creating, reading, updating, and deleting vehicle information. The API also includes authentication and authorization mechanisms to ensure secure access to resources.
             </p>
             <h2 class="text-2xl">Example</h2>
             <div class="mockup-code my-3">
                 <pre
                 data-prefix="1"
                 class="text-sm px-4 my-2"
-                ><code class="text-green-700">// Register Kasir</code></pre>
+                ><code class="text-green-700">// Register</code></pre>
                 <pre
                 data-prefix="2"
                 class="text-sm px-4 my-2"
@@ -32,27 +32,27 @@
                 <pre
                 data-prefix="3"
                 class="text-sm px-4 my-2"
-                ><code class="text-green-700">// Get all Kasir</code></pre>
+                ><code class="text-green-700">// Get all Users</code></pre>
                 <pre
                 data-prefix="4"
                 class="text-sm px-4 my-2"
-                ><code><span class="text-blue-500">GET</span> /api/v1/kasir</code></pre>
+                ><code><span class="text-blue-500">GET</span> /api/v1/user/all</code></pre>
                 <pre
                 data-prefix="5"
                 class="text-sm px-4 my-2"
-                ><code class="text-green-700">// Update Kasir</code></pre>
+                ><code class="text-green-700">// Update User</code></pre>
                 <pre
                 data-prefix="6"
                 class="text-sm px-4 my-2"
-                ><code><span class="text-yellow-500">PUT</span> /api/v1/kasir</code></pre>
+                ><code><span class="text-yellow-500">PATCH</span> /api/v1/user/:id</code></pre>
                 <pre
                 data-prefix="7"
                 class="text-sm px-4 my-2"
-                ><code class="text-green-700">// Delete Kasir</code></pre>
+                ><code class="text-green-700">// Delete User</code></pre>
                 <pre
                 data-prefix="8"
                 class="text-sm px-4 my-2"
-                ><code><span class="text-red-500">DELETE</span> /api/v1/kasir/:id</code></pre>
+                ><code><span class="text-red-500">DELETE</span> /api/v1/user/:id</code></pre>
             </div>
             <a href="/docs" target="_blank" class="btn btn-primary text-white"
                 >More Documentation

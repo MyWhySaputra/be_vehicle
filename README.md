@@ -21,10 +21,10 @@ PASS_SMTP=""
 DATABASE_URL=""
 ```
 
-## Migration
+## Push Database
 
 ```
-npx prisma migrate dev
+npx prisma db push
 ```
 
 ## Seed Data Dumy
@@ -39,13 +39,28 @@ npm run seed
 npm run dev
 ```
 
+## Admin & User Account
+
+```
+email : admin@gmail.com
+```
+```
+password : admin12345
+```
+```
+email : user@gmail.com
+```
+```
+password : admin12345
+```
+
 ## Deploy in Vercel
 
-    Coming soon...
+    https://be-vehicle.vercel.app/
 
 ## Documentation in swagger
 
-    Coming soon...
+    https://be-vehicle.vercel.app/docs
 
 # ERD
 
