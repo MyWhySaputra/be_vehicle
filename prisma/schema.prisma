@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id          Int       @id @default(autoincrement())
+  name        String    @db.VarChar(255)
+  email       String    @db.VarChar(100) @unique
+  password    String    @db.VarChar(255)
+  is_verified Boolean   @default(false)
+  is_admin    Boolean   @default(false)
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  pricelist   pricelist[]
+}
+
+model pricelist {
+  id              Int       @id @default(autoincrement())
+  user_id         Int       
+  code            String    @db.VarChar(255)
+  price           Int
+  year_id         Int       
+  model_id        Int 
+  created_at      DateTime  @default(now())
+  updated_at      DateTime  @updatedAt
+  user users @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  year vehicle_year @relation(fields: [year_id], references: [id], onDelete: Cascade)
+  model vehicle_model @relation(fields: [model_id], references: [id], onDelete: Cascade)
+}
+
+model vehicle_year {
+  id              Int       @id @default(autoincrement())
+  year            Int       @unique
+  created_at      DateTime  @default(now())
+  updated_at      DateTime  @default(now()) @updatedAt
+  pricelist pricelist[]
+}
+
+model vehicle_model {
+  id              Int       @id @default(autoincrement())
+  name            String    @db.VarChar(255)
+  type_id         Int
+  created_at      DateTime  @default(now())
+  updated_at      DateTime  @default(now()) @updatedAt
+  pricelist pricelist[]
+  type vehicle_type @relation(fields: [type_id], references: [id], onDelete: Cascade)
+}
+
+model vehicle_type {
+  id              Int       @id @default(autoincrement())
+  name            String    @db.VarChar(255)
+  brand_id        Int
+  created_at      DateTime  @default(now())
+  updated_at      DateTime  @default(now()) @updatedAt
+  vehicle_model vehicle_model[]
+  brand vehicle_brand @relation(fields: [brand_id], references: [id], onDelete: Cascade)
+}
+
+model vehicle_brand {
+  id              Int       @id @default(autoincrement())
+  name            String    @db.VarChar(255) @unique
+  created_at      DateTime  @default(now())
+  updated_at      DateTime  @default(now()) @updatedAt
+  vehicle_type vehicle_type[]
+}
